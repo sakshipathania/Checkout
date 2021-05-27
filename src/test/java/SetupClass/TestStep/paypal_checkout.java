@@ -735,7 +735,7 @@ public class paypal_checkout extends Set {
 		
 		
 	
-		 WebElement PP_Email = driver.findElement(By.xpath("/html/body/div[1]/section[2]/div/div/form/div[3]/div[1]/div[2]/div[1]/input"));
+		/* WebElement PP_Email = driver.findElement(By.xpath("/html/body/div[1]/section[2]/div/div/form/div[3]/div[1]/div[2]/div[1]/input"));
                          Thread.sleep(2000);
 		   PP_Email.sendKeys("tatvashardul-buyer@gmail.com");
 		   Thread.sleep(2000);
@@ -760,7 +760,7 @@ public class paypal_checkout extends Set {
 		Thread.sleep(2000);	
 		
 		 driver.get("https://www.slideteam.net/pricing");
-		Thread.sleep(2000);
+		Thread.sleep(2000*/
 		 //  WebElement Education = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/main/div[2]/div/div[2]/div[2]/div[1]/div/div/button[3]")));
 				//Thread.sleep(2000);
 		//Education.click();
