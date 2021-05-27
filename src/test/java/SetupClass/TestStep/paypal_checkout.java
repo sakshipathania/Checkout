@@ -709,7 +709,6 @@ public class paypal_checkout extends Set {
 	@Then("^paypal popup appears and user navigates back to my account pp$")
 	public void paypal_popup_appears_and_user_navigates_back_to_my_account_pp() throws Throwable {
 	    
-		  // Maximize Window
 		  driver.manage().window().maximize();
 		
 		  // Store the CurrentWindow for future reference
@@ -724,7 +723,6 @@ public class paypal_checkout extends Set {
 		    
 		    popupWindowHandle = handle;
 		     driver.switchTo().window(popupWindowHandle);
-			   driver.manage().window().maximize();
 		   }
 		  }
 		  
@@ -734,10 +732,10 @@ public class paypal_checkout extends Set {
 		  String pp_page_title=driver.getTitle();
 			Thread.sleep(3000);
 		    System.out.println("Title of the Page is --> "+pp_page_title);
-		    //Paypal Page
+		
 		
 	
-		 WebElement PP_Email = driver.findElement(By.id("email"));
+		 WebElement PP_Email = driver.findElement(By.xpath("/html/body/div[1]/section[2]/div/div/form/div[3]/div[1]/div[2]/div[1]/input"));
                          Thread.sleep(2000);
 		   PP_Email.sendKeys("tatvashardul-buyer@gmail.com");
 		   Thread.sleep(2000);
@@ -889,42 +887,15 @@ public class paypal_checkout extends Set {
 	@Then("^user deleted the account pp$")
 	public void user_deleted_the_account_pp() throws Throwable {
 	   
-		Thread.sleep(2000);
-		
-
-		/* driver.findElement(By.xpath("//a[contains(.,'My Account')]")).click();
+		Thread.sleep(3000);
+	    WebElement account = driver.findElement(By.xpath("//a[contains(.,'My Account')]"));
+			  Thread.sleep(3000);
+			account.click();
 		 Thread.sleep(3000);
 		 
 		
-                     try {
-			WebElement iframe = driver.findElement(By.id("livechat-full-view"));
-			if(iframe.isDisplayed()) {
-				driver.switchTo().frame(iframe);   
-				 Actions act = new Actions(driver);
-				 act.moveToElement(driver.findElement(By.cssSelector("#title .icon-minimize"))).build().perform();
-				 Thread.sleep(2000);
-					WebElement chat1=driver.findElement(By.cssSelector("#title .icon-minimize"));
-					 Thread.sleep(1000);
-						chat1.click();
-						 Thread.sleep(1000);
-						 driver.switchTo().defaultContent();
-						 Thread.sleep(1000);
-						 driver.switchTo().parentFrame();
-					 Thread.sleep(1000);
-			}
-			else {
-				
 
-			System.out.println("chat window does not open");
-			}
-		}
-				catch(NoSuchElementException NCP) {
-					
-				}
-
-
-
-		 WebElement delete_account = driver.findElement(By.xpath("//a[contains(text(),'Delete Account')]"));
+		 WebElement delete_account = driver.findElement(By.cssSelector("#clicking"));
 		js.executeScript("arguments[0].scrollIntoView();",delete_account);
 		 delete_account.click();
 		 Thread.sleep(3000);
@@ -933,27 +904,16 @@ public class paypal_checkout extends Set {
 		delete_reason.click();
 		Thread.sleep(3000);
 		
-		WebElement delete_profile = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#delete-final")));
+		 WebElement delete_profile = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#delete-final")));
 		js.executeScript("arguments[0].scrollIntoView();",delete_profile);
 		delete_profile.click();
-		 Thread.sleep(10000);
+		 Thread.sleep(3000);
 		
 		WebElement delete_profile_coupon = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#flipModal > div > div > div.modal-footer.button_action > button.btn.btn-default.button_2")));
 		js.executeScript("arguments[0].scrollIntoView();",delete_profile_coupon);
 		delete_profile_coupon.click();
 		 Thread.sleep(3000);
-	} */
-		try {
-			WebElement logout = driver.findElement(By.xpath("//a[contains(text(),'Sign Out')]"));
-			if (logout.isEnabled()) {
-				logout.click();
-				Thread.sleep(8000);
-				driver.navigate().refresh();
-				Thread.sleep(2000);
-			}
-		} catch (NoSuchElementException Ext) {
-
-		}
+		
 	}
 
 }
