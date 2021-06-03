@@ -888,9 +888,10 @@ public class paypal_checkout extends Set {
 	public void user_deleted_the_account_pp() throws Throwable {
 	   
 		Thread.sleep(3000);
-	    WebElement account = driver.findElement(By.xpath("//a[contains(.,'My Account')]"));
+	   // WebElement account = driver.findElement(By.xpath("//a[contains(.,'My Account')]"));
+		driver.get("https://www.slideteam.net/customer/account/");
 			  Thread.sleep(3000);
-			account.click();
+			//account.click();
 		 Thread.sleep(3000);
 		 
 		
