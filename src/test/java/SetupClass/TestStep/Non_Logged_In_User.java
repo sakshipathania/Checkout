@@ -22,7 +22,7 @@ public class Non_Logged_In_User extends Set {
        @Given("^user is already on PDP Page MD viii$")
 	public void user_is_already_on_PDP_Page_MD_viii() throws Throwable {
 		
-		Thrad.sleep(5000);
+		Thread.sleep(5000);
 		driver.get("https://www.slideteam.net/change-management-powerpoint-presentation-slides.html");
 		Thread.sleep(2000);
 	    
