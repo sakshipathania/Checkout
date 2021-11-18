@@ -730,8 +730,8 @@ public class paypal_checkout extends Set {
 			   
 		     Thread.sleep(1000);
 		     driver.switchTo().window(popupWindowHandle);
-				System.out.println("user is on mainWindow ------" + childWindow);
-				driver.switchTo().window(childWindow);
+				//System.out.println("user is on mainWindow ------" + popupWindowHandle);
+				
 				System.out.println("Title = " + driver.getTitle());
 				
 				Assert.assertTrue("title does not matched",
@@ -752,7 +752,7 @@ public class paypal_checkout extends Set {
 			}
 		}
 		// This is to switch to the main window
-		driver.switchTo().window(mainWindow);
+		 driver.switchTo().window(currentWindow);
 
 
 		    
