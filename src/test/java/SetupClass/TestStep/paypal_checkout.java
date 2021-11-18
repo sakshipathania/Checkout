@@ -10,8 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
-import java.util.Iterator;
-import java.util.Set;
+
 import SetupClass.Set;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -718,24 +717,19 @@ public class paypal_checkout extends Set {
 	public void paypal_popup_appears_and_user_navigates_back_to_my_account_pp() throws Throwable {
 	    
 		//handling window
+		// Store the CurrentWindow for future reference
 		
-	        String mainWindow = driver.getWindowHandle();
-
-		System.out.println("user is on mainWindow ------" + mainWindow);
-		// It returns no. of windows opened by WebDriver and will return Set of Strings
-		Thread.sleep(4000);
-		
-		Set<String> set = driver.getWindowHandles();
-
-		// Using Iterator to iterate with in windows
-		Iterator<String> itr = set.iterator();
-		while (itr.hasNext()) {
-			String childWindow = itr.next();
-			// Compare whether the main windows is not equal to child window. If not equal,
-			// we will close.
-
-			System.out.println("set size = " + set.size());
-			if (!mainWindow.equals(childWindow)) {
+		  String currentWindow = driver.getWindowHandle();
+		  String popupWindowHandle = null;
+		   
+		   Thread.sleep(2000);
+		   for(String handle : driver.getWindowHandles()){
+		   if(!handle.equals(currentWindow)){
+		    
+		    popupWindowHandle = handle;
+			   
+		     Thread.sleep(1000);
+		     driver.switchTo().window(popupWindowHandle);
 				System.out.println("user is on mainWindow ------" + childWindow);
 				driver.switchTo().window(childWindow);
 				System.out.println("Title = " + driver.getTitle());
