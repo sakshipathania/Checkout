@@ -31,7 +31,7 @@ public class Non_Logged_In_User extends Set {
 	@Then("^User click on Download button to download the product viii$")
 	public void User_click_on_Download_button_to_download_the_product_viii() throws Throwable {
 	    
-		WebElement download_btn_pdp_fp = wait.until(ExpectedConditions.elementToBeClickable(By.id("clicking")));
+		WebElement download_btn_pdp_fp = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='clicking']")));
 		js.executeScript("arguments[0].scrollIntoView();",download_btn_pdp_fp);	
 		Thread.sleep(2000);
 		download_btn_pdp_fp.click();
@@ -75,8 +75,8 @@ public class Non_Logged_In_User extends Set {
 	@Then("^user download the product viii$")
 	public void user_download_the_product_viii() throws Throwable {
 		Thread.sleep(3000);
-	    // driver.get("https://www.slideteam.net/puzzles-with-multiple-business-icons-flat-powerpoint-design.html");
-		//Thread.sleep(2000);
+	    driver.get("https://www.slideteam.net/puzzles-with-multiple-business-icons-flat-powerpoint-design.html");
+		Thread.sleep(2000);
 		WebElement download_btn_pdp= wait.until(ExpectedConditions.elementToBeClickable(By.id("clicking")));
 		js.executeScript("arguments[0].scrollIntoView();",download_btn_pdp);	
 		Thread.sleep(2000);
