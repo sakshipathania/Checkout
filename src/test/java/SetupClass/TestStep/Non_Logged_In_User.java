@@ -24,7 +24,12 @@ public class Non_Logged_In_User extends Set {
 		
 		Thread.sleep(5000);
 		driver.get("https://www.slideteam.net/change-management-powerpoint-presentation-slides.html");
+		
+		driver.manage().deleteAllCookies();
+		Thread.sleep(3000);
+		driver.navigate().refresh();
 		Thread.sleep(2000);
+		
 	    
 	}
 
