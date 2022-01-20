@@ -200,7 +200,13 @@ public class sign_up_correct_data extends Set {
 		WebElement delete_profile_coupon = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#flipModal > div > div > div.modal-footer.button_action > button.btn.btn-default.button_2")));
 		js.executeScript("arguments[0].scrollIntoView();",delete_profile_coupon);
 		delete_profile_coupon.click();
-		 Thread.sleep(9000);
+		Thread.sleep(30000);
+		
+		String verifyDeleteAccount = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"))).getText();
+		 Thread.sleep(3000);
+	         Assert.assertTrue("Account is not deleted", verifyDeleteAccount.contains("Your account has been deleted successfully."));
+	         System.out.println("your account delete successfully");
 	}
 
 	
