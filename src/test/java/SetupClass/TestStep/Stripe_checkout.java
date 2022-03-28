@@ -630,19 +630,19 @@ public class Stripe_checkout extends Set{
 		js.executeScript("arguments[0].scrollIntoView();",join_now_btn);
 		Thread.sleep(3300);
 		    join_now_btn.click();
-			Thread.sleep(6000);
+			Thread.sleep(9000);
 
 	}
 
 	@Then("^user is redirected to checkout page (\\d+)CO$")
 	public void user_is_redirected_to_checkout_page_CO(int arg1) throws Throwable {
-		Thread.sleep(6000);
+		//Thread.sleep(6000);
 	}
 
 	@Then("^user proceed to pay with (\\d+)CO (\\d+)CO$")
 	public void user_proceed_to_pay_with_CO_CO(int arg1, int arg2) throws InterruptedException {
 	     try {
-		Thread.sleep(1400);
+		Thread.sleep(600);
 		// select 2co option
 		WebElement co_btn  = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#amasty_stripe")));
 		Thread.sleep(2000);
