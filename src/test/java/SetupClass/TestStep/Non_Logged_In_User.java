@@ -85,8 +85,8 @@ public class Non_Logged_In_User extends Set {
 	@Then("^user download the product viii$")
 	public void user_download_the_product_viii() throws Throwable {
 		Thread.sleep(3000);
-	    driver.get("https://www.slideteam.net/puzzles-with-multiple-business-icons-flat-powerpoint-design.html");
-		Thread.sleep(2000);
+	   
+		
 		WebElement download_btn_pdp= wait.until(ExpectedConditions.elementToBeClickable(By.id("clicking")));
 		js.executeScript("arguments[0].scrollIntoView();",download_btn_pdp);	
 		Thread.sleep(2000);
