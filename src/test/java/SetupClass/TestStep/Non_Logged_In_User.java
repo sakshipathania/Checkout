@@ -74,7 +74,7 @@ public class Non_Logged_In_User extends Set {
 		login_btn.click();
 		Thread.sleep(2000);
 		
-		driver.navigate().refresh();
+		
 	}
 
 	@Then("^user will be redirected to same pdp page viii$")
