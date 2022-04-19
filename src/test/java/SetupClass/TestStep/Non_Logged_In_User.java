@@ -39,13 +39,15 @@ public class Non_Logged_In_User extends Set {
 	@Then("^User click on Download button to download the product viii$")
 	public void User_click_on_Download_button_to_download_the_product_viii() throws Throwable {
 	    
-		WebElement download_btn_pdp_fp = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='clicking']")));
-		js.executeScript("arguments[0].scrollIntoView();",download_btn_pdp_fp);	
-		Thread.sleep(2000);
-		download_btn_pdp_fp.click();
-		
-		Thread.sleep(2000);
-		
+		 WebElement download = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[normalize-space()='Download this presentation']")));
+	         download.click();
+	         Thread.sleep(3000);
+	         WebElement registeredUsers = wait
+				.until(ExpectedConditions.elementToBeClickable(By.linkText("Registered Users")));
+	 
+	         js.executeScript("arguments[0].click();", registeredUsers);
+		 Thread.sleep(2000);
 		
 		
 	}
@@ -58,17 +60,17 @@ public class Non_Logged_In_User extends Set {
   @Then("^user login with correct details viii$")
 	public void user_login_with_correct_details_viii() throws Throwable {
 		WebElement username = wait.until(ExpectedConditions.elementToBeClickable(By.id("email")));
-		Thread.sleep(2000);
+		
 		username.sendKeys("sumit@slideteam.net");
 		Thread.sleep(2000);
 		
 		WebElement password = wait.until(ExpectedConditions.elementToBeClickable(By.id("pass")));
-		Thread.sleep(2000);
+		
 		password.sendKeys("sumittest@21234");
 		Thread.sleep(2000);
 		
 		WebElement login_btn = wait.until(ExpectedConditions.elementToBeClickable(By.id("send2")));
-		Thread.sleep(2000);
+	
 		login_btn.click();
 		Thread.sleep(2000);
 		
