@@ -43,10 +43,10 @@ public class Non_Logged_In_User extends Set {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[normalize-space()='Download this presentation']")));
 	         download.click();
 	         Thread.sleep(3000);
-	        /* WebElement registeredUsers = wait
+	         WebElement registeredUsers = wait
 				.until(ExpectedConditions.elementToBeClickable(By.linkText("Registered Users")));
 	 
-	         js.executeScript("arguments[0].click();", registeredUsers);*/
+	         js.executeScript("arguments[0].click();", registeredUsers);
 		 Thread.sleep(4000);
 		
 		
