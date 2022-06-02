@@ -2,7 +2,7 @@ package SetupClass.TestStep;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -104,12 +104,17 @@ public class Non_Logged_In_User extends Set {
 			if (logout.isEnabled()) {
 				logout.click();
 				Thread.sleep(8000);
-				driver.navigate().refresh();
-				Thread.sleep(2000);
 			}
 		} catch (NoSuchElementException Ext) {
 
 		}
+		
+		// verify the message after signout
+		String verifySignOutMessage = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//h3[@class='base']"))).getText();
+
+		Assert.assertTrue("user is not logout from the application",
+				verifySignOutMessage.contains("YOU ARE NOW LOGGED OUT"));
 		
 	}
 }
