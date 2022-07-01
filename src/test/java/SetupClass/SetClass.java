@@ -14,7 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Set {
+public class SetClass {
 
 	public static WebDriver driver;
 	public static String AppURL;
