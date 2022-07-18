@@ -147,47 +147,38 @@ public class sign_up_correct_data extends SetClass {
 	public void user_lands_on_pricing_page_and_then_user_go_to_free_ppts_page_cd() throws InterruptedException {
 
 		Thread.sleep(5000);
-		Actions actions = new Actions(driver);
-		WebElement free_ppt_btn1 = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Free Stuff")));
-		actions.moveToElement(free_ppt_btn1)
-				.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Free PPTs')]"))).click().build()
-				.perform();
-		Thread.sleep(7000);
-		// WebElement
-		// free_ppt_btn=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/header/div[1]/div[2]/div/nav/div/div/ul/li[2]/div/ul/li[1]/a")));
-		// free_ppt_btn.click();
-		// Thread.sleep(2000);
+		try {
+			Thread.sleep(3000);
+			WebElement free_Stuff = wait.until(ExpectedConditions.elementToBeClickable(
+					By.xpath("//li[@class='menu-item has-sub-class']//a[@title = 'Free Stuff']")));
+			Actions action = new Actions(driver);
+			action.moveToElement(free_Stuff).perform();
+			WebElement free_ppt = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Free Samples']")));
+			action.moveToElement(free_ppt).click().perform();
+		} catch (NoSuchElementException e) {
+
+		}
 
 	}
 
 	@Then("^user download a free product cd$")
 	public void user_download_a_free_product_cd() throws InterruptedException {
-		// driver.findElement(By.cssSelector("li.item:nth-child(8) > div:nth-child(1) >
-		// div:nth-child(2) > strong:nth-child(1) > span:nth-child(1) >
-		// a:nth-child(1)")).click();
-		// Thread.sleep(3000);
 
-		driver.get("https://www.slideteam.net/circular-flow-of-process-4-stages-powerpoint-slides-templates.html");
 		Thread.sleep(3000);
-
+		WebElement select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("//img[@title='Circular flow of process 4 stages free powerpoint templates slides']")));
 		WebElement dwnd_btn = driver.findElement(By.cssSelector("#clicking"));
 		js.executeScript("arguments[0].scrollIntoView();", dwnd_btn);
 		dwnd_btn.click();
 		Thread.sleep(3000);
-		driver.get("https://www.slideteam.net/");
-		Thread.sleep(3000);
+
 	}
 
 	@Then("^user delete the new account created cd$")
 	public void user_delete_the_new_account_created_cd() throws InterruptedException {
 		Thread.sleep(3000);
-		driver.get("https://www.slideteam.net/");
-		Thread.sleep(2000);
-
-		Thread.sleep(3000);
-
-		WebElement account = driver.findElement(By.xpath("//a[contains(.,'My Account')]"));
-		Thread.sleep(3000);
+		WebElement account = wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("My Account")));
 		account.click();
 		Thread.sleep(3000);
 

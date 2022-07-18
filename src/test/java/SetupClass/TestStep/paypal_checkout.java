@@ -764,11 +764,11 @@ public class paypal_checkout extends SetClass {
 	public void user_deleted_the_account_pp() throws Throwable {
 
 		Thread.sleep(3000);
-		// WebElement account = driver.findElement(By.xpath("//a[contains(.,'My
-		// Account')]"));
-		driver.get("https://www.slideteam.net/customer/account/");
+		WebElement account = wait
+				.until(ExpectedConditions.presenceOfElementLocated(By.linkText("My Account")));
+		account.click();
 		Thread.sleep(3000);
-		// account.click();
+	
 		Thread.sleep(3000);
 
 		WebElement delete_account = driver.findElement(By.cssSelector("#clicking"));
@@ -776,6 +776,7 @@ public class paypal_checkout extends SetClass {
 		delete_account.click();
 		Thread.sleep(3000);
 		WebElement delete_reason = driver.findElement(By.cssSelector("#exampleRadios1"));
+		js.executeScript("arguments[0].scrollIntoView();", delete_reason);
 		Thread.sleep(3000);
 		delete_reason.click();
 		Thread.sleep(3000);
