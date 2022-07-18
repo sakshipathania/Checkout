@@ -53,6 +53,7 @@ public class SetClass {
 		else if ((local_FFbrowser.equals("yes"))) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
+			driver.manage().window().maximize();
 
 			Thread.sleep(1000);
 		} else {
@@ -73,7 +74,7 @@ public class SetClass {
 	@AfterClass
 	public static void after_Class() throws InterruptedException {
 		Thread.sleep(2000);
-		driver.quit();  //->> don't want to close the browser for now
+		//driver.quit();  //->> don't want to close the browser for now
 		Thread.sleep(2000);
 	
 	}

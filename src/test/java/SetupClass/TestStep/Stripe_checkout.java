@@ -739,8 +739,8 @@ public class Stripe_checkout extends SetClass {
 		delete_profile_coupon.click();
 		Thread.sleep(30000);
 
-		String verifyDeleteAccount = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"))).getText();
+		String verifyDeleteAccount = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
 		Thread.sleep(3000);
 		Assert.assertTrue("Account is not deleted",
 				verifyDeleteAccount.contains("Your account has been deleted successfully."));

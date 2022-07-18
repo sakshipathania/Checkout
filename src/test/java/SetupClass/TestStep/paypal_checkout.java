@@ -110,18 +110,21 @@ public class paypal_checkout extends SetClass {
 
 		// enter name
 
-		WebElement new_fname_signup = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='firstname']")));
+		WebElement new_fname_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='firstname']")));
 		Thread.sleep(2000);
 		new_fname_signup.sendKeys("Selenium");
 		Thread.sleep(2000);
 
-		WebElement new_lname_signup = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='lastname']")));
+		WebElement new_lname_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='lastname']")));
 		Thread.sleep(2000);
 		new_lname_signup.sendKeys("Testing");
 		Thread.sleep(2000);
 
 		// enter password
-		WebElement new_pwd_signup = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='password']")));
+		WebElement new_pwd_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='password']")));
 		Thread.sleep(2000);
 		new_pwd_signup.sendKeys("selenium@123");
 		Thread.sleep(2000);
@@ -140,7 +143,8 @@ public class paypal_checkout extends SetClass {
 		 */
 
 		// sign up button
-		WebElement new_btn_signup = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Sign Up']")));
+		WebElement new_btn_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Sign Up']")));
 		Thread.sleep(2000);
 		new_btn_signup.click();
 		Thread.sleep(2000);
@@ -763,12 +767,9 @@ public class paypal_checkout extends SetClass {
 	@Then("^user deleted the account pp$")
 	public void user_deleted_the_account_pp() throws Throwable {
 
-		Thread.sleep(3000);
-		WebElement account = wait
-				.until(ExpectedConditions.presenceOfElementLocated(By.linkText("My Account")));
-		account.click();
-		Thread.sleep(3000);
-	
+		Thread.sleep(4000);
+		WebElement account = driver.findElement(By.xpath("//a[contains(.,'My Account')]"));
+		js.executeScript("arguments[0].click();", account);
 		Thread.sleep(3000);
 
 		WebElement delete_account = driver.findElement(By.cssSelector("#clicking"));
@@ -792,8 +793,8 @@ public class paypal_checkout extends SetClass {
 		js.executeScript("arguments[0].scrollIntoView();", delete_profile_coupon);
 		delete_profile_coupon.click();
 		Thread.sleep(30000);
-		String verifyDeleteAccount = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"))).getText();
+		String verifyDeleteAccount = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
 		Thread.sleep(3000);
 		Assert.assertTrue("Account is not deleted",
 				verifyDeleteAccount.contains("Your account has been deleted successfully."));

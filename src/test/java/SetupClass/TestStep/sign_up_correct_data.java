@@ -145,21 +145,20 @@ public class sign_up_correct_data extends SetClass {
 
 	@Then("^user lands on pricing page and then user go to free ppts page cd$")
 	public void user_lands_on_pricing_page_and_then_user_go_to_free_ppts_page_cd() throws InterruptedException {
-
-		Thread.sleep(5000);
-		try {
-			Thread.sleep(3000);
-			WebElement free_Stuff = wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//li[@class='menu-item has-sub-class']//a[@title = 'Free Stuff']")));
-			Actions action = new Actions(driver);
-			action.moveToElement(free_Stuff).perform();
-			WebElement free_ppt = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Free Samples']")));
-			action.moveToElement(free_ppt).click().perform();
-		} catch (NoSuchElementException e) {
-
-		}
-
+		/*
+		 * try { Thread.sleep(5000); WebElement free_Stuff =
+		 * wait.until(ExpectedConditions.elementToBeClickable(
+		 * By.xpath("//li[@class='menu-item has-sub-class']//a[@title = 'Free Stuff']"))
+		 * ); Actions action = new Actions(driver);
+		 * action.moveToElement(free_Stuff).perform(); WebElement free_ppt = wait
+		 * .until(ExpectedConditions.elementToBeClickable(By.
+		 * xpath("//a[@title='Free Samples']")));
+		 * action.moveToElement(free_ppt).click().perform(); } catch
+		 * (NoSuchElementException e) {
+		 * 
+		 * }
+		 */
+		driver.get("https://www.slideteam.net/share-and-download-products/");
 	}
 
 	@Then("^user download a free product cd$")
@@ -168,9 +167,18 @@ public class sign_up_correct_data extends SetClass {
 		Thread.sleep(3000);
 		WebElement select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//img[@title='Circular flow of process 4 stages free powerpoint templates slides']")));
+		select_ppt.click();
+		Thread.sleep(3000);
 		WebElement dwnd_btn = driver.findElement(By.cssSelector("#clicking"));
 		js.executeScript("arguments[0].scrollIntoView();", dwnd_btn);
 		dwnd_btn.click();
+
+		if (!driver.findElements(By.xpath("//a[@class='mfp-close roundlink']")).isEmpty()) {
+			WebElement close_popup = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='mfp-close roundlink']")));
+
+			close_popup.click();
+		}
 		Thread.sleep(3000);
 
 	}
@@ -203,8 +211,8 @@ public class sign_up_correct_data extends SetClass {
 		delete_profile_coupon.click();
 		Thread.sleep(30000);
 
-		String verifyDeleteAccount = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"))).getText();
+		String verifyDeleteAccount = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
 		Thread.sleep(3000);
 		Assert.assertTrue("Account is not deleted",
 				verifyDeleteAccount.contains("Your account has been deleted successfully."));
