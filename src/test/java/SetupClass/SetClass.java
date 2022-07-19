@@ -2,15 +2,18 @@ package SetupClass;
 
 import java.io.FileReader;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -27,7 +30,9 @@ public class SetClass {
 	public String Button_Click_Time;
 	public String message_write_time;
 	public String TestFile = "C:\\Users\\slide53\\eclipse-workspace\\SlideTeamWebsiteFormsAuto\\write.txt";
-	
+	protected static WebDriverWait wait;
+	protected static JavascriptExecutor js;
+
 	@BeforeClass
 	public static void before_Class() throws Exception {
 		log = Logger.getLogger(BeforeClass.class.getName());
@@ -38,13 +43,15 @@ public class SetClass {
 		// on source lab setup
 		AppURL = property.getProperty("App_url");
 		System.out.println("Bname=====" + AppURL);
-	
+
 		if ((local_chrome.equals("yes"))) {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-notifications");
 			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
+			wait = new WebDriverWait(driver, 50);
+			js = (JavascriptExecutor) driver;
 			Thread.sleep(1000);
 		}
 		// if (browser.equalsIgnoreCase("firefox"))
@@ -54,29 +61,34 @@ public class SetClass {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			driver.manage().window().maximize();
+			driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
+			driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
+			wait = new WebDriverWait(driver, 50);
+			js = (JavascriptExecutor) driver;
 			Thread.sleep(1000);
 		} else {
 
 			System.out.println("platform does not provide");
-
 		}
 
-		driver.get(AppURL);
-		Thread.sleep(2000);
-	    driver.manage().deleteAllCookies();
-	    Thread.sleep(2000);
+	}
 
-			
-		}
-	
-	
+	public static void ClearBrowserCache() throws Throwable {
+
+		driver.manage().deleteAllCookies();
+		Thread.sleep(4000); // wait 7 seconds to clear cookies.
+		driver.navigate().refresh();
+		Thread.sleep(3000);
+	}
+
 	@AfterClass
 	public static void after_Class() throws InterruptedException {
 		Thread.sleep(2000);
-		//driver.quit();  //->> don't want to close the browser for now
+		driver.quit(); // ->> don't want to close the browser for now
 		Thread.sleep(2000);
-	
+
 	}
 
 }

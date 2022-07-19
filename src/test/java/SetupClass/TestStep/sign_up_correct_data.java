@@ -21,23 +21,10 @@ public class sign_up_correct_data extends SetClass {
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	@Given("^user is already on sign up page cd$")
-	public void user_is_already_on_sign_up_page_cd() throws InterruptedException {
+	public void user_is_already_on_sign_up_page_cd() throws Throwable {
 
 		driver.get(AppURL);
-		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-		log.info("It's opening the website URL");
-		Thread.sleep(2000);
-		try {
-			WebElement logout = driver.findElement(By.xpath("//a[contains(text(),'Sign Out')]"));
-			if (logout.isEnabled()) {
-				logout.click();
-				Thread.sleep(8000);
-				driver.navigate().refresh();
-				Thread.sleep(2000);
-			}
-		} catch (NoSuchElementException Ext) {
-
-		}
+		ClearBrowserCache();
 		Thread.sleep(3000);
 		try {
 			driver.findElement(By.cssSelector("ul.header > li:nth-child(1) > a:nth-child(1)")).click();
@@ -139,32 +126,33 @@ public class sign_up_correct_data extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Sign Up']")));
 		Thread.sleep(2000);
 		new_btn_signup.click();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 
 	}
 
 	@Then("^user lands on pricing page and then user go to free ppts page cd$")
 	public void user_lands_on_pricing_page_and_then_user_go_to_free_ppts_page_cd() throws InterruptedException {
-		/*
-		 * try { Thread.sleep(5000); WebElement free_Stuff =
-		 * wait.until(ExpectedConditions.elementToBeClickable(
-		 * By.xpath("//li[@class='menu-item has-sub-class']//a[@title = 'Free Stuff']"))
-		 * ); Actions action = new Actions(driver);
-		 * action.moveToElement(free_Stuff).perform(); WebElement free_ppt = wait
-		 * .until(ExpectedConditions.elementToBeClickable(By.
-		 * xpath("//a[@title='Free Samples']")));
-		 * action.moveToElement(free_ppt).click().perform(); } catch
-		 * (NoSuchElementException e) {
-		 * 
-		 * }
-		 */
-		driver.get("https://www.slideteam.net/share-and-download-products/");
+		// driver.navigate().refresh();
+		try {
+			Thread.sleep(3000);
+			WebElement free_Stuff = wait.until(ExpectedConditions.elementToBeClickable(
+					By.xpath("//li[@class='menu-item has-sub-class']//a[@title = 'Free Stuff']")));
+			Actions action = new Actions(driver);
+			action.moveToElement(free_Stuff).perform();
+			Thread.sleep(3000);
+			WebElement free_ppt = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Free Samples']")));
+			action.moveToElement(free_ppt).click().perform();
+		} catch (NoSuchElementException e) {
+
+		}
+
 	}
 
 	@Then("^user download a free product cd$")
 	public void user_download_a_free_product_cd() throws InterruptedException {
 
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		WebElement select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//img[@title='Circular flow of process 4 stages free powerpoint templates slides']")));
 		select_ppt.click();
