@@ -491,7 +491,7 @@ public class paypal_checkout extends SetClass {
 	public void user_is_redirected_to_pricing_page_and_check_the_text18_PP0() throws Throwable {
 
 		WebElement actualTitle = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//em[normalize-space()='$999.99']")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//em[normalize-space()='$1999.99']")));
 		js.executeScript("arguments[0].scrollIntoView();", actualTitle);
 		String AnnualUNLIMITED = actualTitle.getText();
 
