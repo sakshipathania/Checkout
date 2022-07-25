@@ -110,7 +110,7 @@ public class Stripe_checkout extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Sign Up']")));
 		Thread.sleep(2000);
 		new_btn_signup.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		/*
 		 * Thread.sleep(1000); WebElement old_email =
 		 * wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
@@ -132,18 +132,18 @@ public class Stripe_checkout extends SetClass {
 	public void user_is_redirected_to_pricing_page_and_check_the_text1_CO(int arg1) throws Throwable {
 
 		String actualTitle = "Monthly";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		String expectedTitle = "Monthly";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); // wait.implictywait(driver);
 		Assert.assertEquals(expectedTitle, actualTitle);
 		Thread.sleep(2000);
 		js.executeScript("alert('Text Monthly is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(5000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text2 (\\d+)CO$")
@@ -153,37 +153,37 @@ public class Stripe_checkout extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//em[normalize-space()='$49.99']")));
 		js.executeScript("arguments[0].scrollIntoView();", actualTitle);
 		String monthly_Price = actualTitle.getText();
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		String expectedTitle = "$49.99";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
-		Assert.assertEquals(expectedTitle, monthly_Price);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); // wait.implictywait(driver);
+		Assert.assertEquals(expectedTitle, monthly_Price); //
+
 		Thread.sleep(2000);
 		js.executeScript("alert('Text $49.99 is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(3000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text3 (\\d+)CO$")
 	public void user_is_redirected_to_pricing_page_and_check_the_text3_CO(int arg1) throws Throwable {
 
 		String actualTitle = "Semi Annual";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		String expectedTitle = "Semi Annual";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); // wait.implictywait(driver);
 		Assert.assertEquals(expectedTitle, actualTitle);
 		Thread.sleep(2000);
 		js.executeScript("alert('Text Semi Annual is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(5000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text4 (\\d+)CO$")
@@ -195,34 +195,33 @@ public class Stripe_checkout extends SetClass {
 		String semi_Annual_Price = actualTitle.getText();
 
 		String expectedTitle = "$149.99";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
-		Assert.assertEquals(expectedTitle, semi_Annual_Price);
-		// wait.implictywait(driver);
-		Thread.sleep(2000);
+		Thread.sleep(1000); //
+
+		Assert.assertEquals(expectedTitle, semi_Annual_Price); // wait.implictywait(driver); Thread.sleep(2000);
 		js.executeScript("alert('Text $149.99 is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(5000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text5 (\\d+)CO$")
 	public void user_is_redirected_to_pricing_page_and_check_the_text5_CO(int arg1) throws Throwable {
 
 		String actualTitle = "Annual";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		String expectedTitle = "Annual";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); // wait.implictywait(driver);
 		Assert.assertEquals(expectedTitle, actualTitle);
 		Thread.sleep(2000);
 		js.executeScript("alert('Text Annual is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(3000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text6 (\\d+)CO$")
@@ -234,54 +233,54 @@ public class Stripe_checkout extends SetClass {
 		String Annual_Price = actualTitle.getText();
 
 		String expectedTitle = "$249.99";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		Assert.assertEquals(expectedTitle, Annual_Price);
 		js.executeScript("alert('Text $249.99 is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
-		Thread.sleep(5000);
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
+		Thread.sleep(5000); // wait.implictywait(driver);
 		Thread.sleep(2000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text7 (\\d+)CO$")
 	public void user_is_redirected_to_pricing_page_and_check_the_text7_CO(int arg1) throws Throwable {
 
 		String actualTitle = "Annual + Custom Design";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		String expectedTitle = "Annual + Custom Design";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); // wait.implictywait(driver);
 		Assert.assertEquals(expectedTitle, actualTitle);
 		Thread.sleep(2000);
 		js.executeScript("alert('Text Annual + Custom Design is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(2000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text8 (\\d+)CO$")
 	public void user_is_redirected_to_pricing_page_and_check_the_text8_CO(int arg1) throws Throwable {
+
 		WebElement actualTitle = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//em[normalize-space()='$299.99']")));
 		js.executeScript("arguments[0].scrollIntoView();", actualTitle);
 		String Annual_CustomePrice = actualTitle.getText();
 
 		String expectedTitle = "$299.99";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
-		Assert.assertEquals(expectedTitle, Annual_CustomePrice);
-		// wait.implictywait(driver);
-		Thread.sleep(2000);
+		Thread.sleep(1000); //
+
+		Assert.assertEquals(expectedTitle, Annual_CustomePrice); // wait.implictywait(driver); Thread.sleep(2000);
 		js.executeScript("alert('Text $299.99 is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(5000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text9 (\\d+)CO$")
@@ -296,18 +295,18 @@ public class Stripe_checkout extends SetClass {
 		Thread.sleep(3000);
 
 		String actualTitle = "Annual 4 User License";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		String expectedTitle = "Annual 4 User License";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); // wait.implictywait(driver);
 		Assert.assertEquals(expectedTitle, actualTitle);
 		Thread.sleep(2000);
 		js.executeScript("alert('Text Annual 4 User License is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(5000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text10 (\\d+)CO$")
@@ -319,33 +318,34 @@ public class Stripe_checkout extends SetClass {
 		String Annual4UserLicensePrice = actualTitle.getText();
 
 		String expectedTitle = "$599.99";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		Assert.assertEquals(expectedTitle, Annual4UserLicensePrice);
 		Thread.sleep(2000);
 		js.executeScript("alert('Text $599.99 is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(5000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text11 (\\d+)CO$")
 	public void user_is_redirected_to_pricing_page_and_check_the_text11_CO(int arg1) throws Throwable {
 
 		String actualTitle = "Annual 20 User License";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		String expectedTitle = "Annual 20 User License";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); // wait.implictywait(driver);
 		Assert.assertEquals(expectedTitle, actualTitle);
 		Thread.sleep(2000);
 		js.executeScript("alert('Text Annual 20 User License is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(3000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text12 (\\d+)CO$")
@@ -357,33 +357,33 @@ public class Stripe_checkout extends SetClass {
 		String Annual20UserLicensePrice = actualTitle.getText();
 
 		String expectedTitle = "$1599.99";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		Assert.assertEquals(expectedTitle, Annual20UserLicensePrice);
 		Thread.sleep(2000);
 		js.executeScript("alert('Text $1599.99 is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
+
 		Thread.sleep(5000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text13 (\\d+)CO$")
 	public void user_is_redirected_to_pricing_page_and_check_the_text13_CO(int arg1) throws Throwable {
 
 		String actualTitle = "Annual Company Wide Unlimited User License";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); // wait.implictywait(driver);
 		String expectedTitle = "Annual Company Wide Unlimited User License";
-		Thread.sleep(1000);
-		// wait.implictywait(driver);
+		Thread.sleep(1000); //
+
 		Assert.assertEquals(expectedTitle, actualTitle);
 		Thread.sleep(2000);
 		js.executeScript("alert('Text Annual Company Wide Unlimited User License is present and correct');");
 		Thread.sleep(3000);
-		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+		driver.switchTo().alert().accept(); //
 		Thread.sleep(3000);
+
 	}
 
 	@Then("^user is redirected to pricing page and check the text14 (\\d+)CO$")
@@ -402,7 +402,7 @@ public class Stripe_checkout extends SetClass {
 		js.executeScript("alert('Text $2999.99 is present and correct');");
 		Thread.sleep(3000);
 		driver.switchTo().alert().accept();
-		// wait.implictywait(driver);
+
 		Thread.sleep(5000);
 
 	}
@@ -495,7 +495,7 @@ public class Stripe_checkout extends SetClass {
 	public void user_is_redirected_to_pricing_page_and_choose_a_plan_to_pay_CO(int arg1) throws Throwable {
 		// choose a plan
 		WebElement individual = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='tablinks active']")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[normalize-space()='Individual']")));
 		Thread.sleep(2000);
 		js.executeScript("arguments[0].scrollIntoView();", individual);
 		Thread.sleep(3000);
@@ -525,7 +525,8 @@ public class Stripe_checkout extends SetClass {
 			// select 2co option
 			WebElement co_btn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#amasty_stripe")));
 			Thread.sleep(2000);
-			co_btn.click();
+			// co_btn.click();
+			js.executeScript("arguments[0].click();", co_btn);
 			Thread.sleep(5000);
 
 			WebElement Stripe_name = wait
