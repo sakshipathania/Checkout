@@ -155,6 +155,7 @@ public class sign_up_correct_data extends SetClass {
 		Thread.sleep(5000);
 		WebElement select_ppt = wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//img[@title='Circular flow of process 4 stages free powerpoint templates slides']")));
+		js.executeScript("arguments[0].scrollIntoView();", select_ppt);
 		select_ppt.click();
 		Thread.sleep(3000);
 		WebElement dwnd_btn = driver.findElement(By.cssSelector("#clicking"));
