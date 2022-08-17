@@ -527,24 +527,26 @@ public class Stripe_checkout extends SetClass {
 			Thread.sleep(2000);
 			// co_btn.click();
 			js.executeScript("arguments[0].click();", co_btn);
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 
 			WebElement Stripe_name = wait
 					.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#stripe-name")));
 			Thread.sleep(2000);
 			Stripe_name.sendKeys("QA");
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 
 			WebElement Stripe_email = wait
 					.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#stripe-email")));
 			Thread.sleep(2000);
 			Stripe_email.sendKeys("sakshi.pathania@slidetech.in");
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 
 			WebElement Stripe_card = driver.findElement(By.className("InputElement is-empty Input Input--empty"));
 			Thread.sleep(2000);
 			Stripe_card.sendKeys("4242424242424242");
-			Thread.sleep(5000);
+			Thread.sleep(2000);
+			
+			Chat_window_handle();
 			// Stripe_card.clear();
 		} catch (NoSuchElementException popup) {
 		}
