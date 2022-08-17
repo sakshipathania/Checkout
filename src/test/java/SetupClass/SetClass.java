@@ -55,9 +55,12 @@ public class SetClass {
 			browser = property.getProperty("browser");
 			System.out.println("config browser = " + browser);
 		}
+		
 		property.setProperty("browser", browser);
+		
+		System.out.println("setProperty browser = " + browser);
 
-		if ((property.getProperty(browser).equals("chrome"))) {
+		if ((property.getProperty("browser").equals("chrome"))) {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-notifications");
@@ -70,7 +73,7 @@ public class SetClass {
 		// if (browser.equalsIgnoreCase("firefox"))
 
 		// if (browser.equalsIgnoreCase("chrome"))
-		else if ((property.getProperty(browser).equals("firefox"))) {
+		else if ((property.getProperty("browser").equals("firefox"))) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			driver.manage().window().maximize();
@@ -81,7 +84,7 @@ public class SetClass {
 			wait = new WebDriverWait(driver, 50);
 			js = (JavascriptExecutor) driver;
 			Thread.sleep(1000);
-		} else if ((property.getProperty(browser).equals("edge"))) {
+		} else if ((property.getProperty("browser").equals("edge"))) {
 
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
