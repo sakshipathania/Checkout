@@ -545,7 +545,7 @@ public class Stripe_checkout extends SetClass {
 			Thread.sleep(2000);
 			Stripe_card.sendKeys("4242424242424242");
 			Thread.sleep(2000);
-			
+
 			Chat_window_handle();
 			// Stripe_card.clear();
 		} catch (NoSuchElementException popup) {
@@ -584,16 +584,19 @@ public class Stripe_checkout extends SetClass {
 	public void user_deleted_the_account_CO(int arg1) throws Throwable {
 		Thread.sleep(3000);
 
-		WebElement account = driver.findElement(By.xpath("//a[contains(.,'My Account')]"));
+		WebElement account = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
 		Thread.sleep(3000);
 		account.click();
 		Thread.sleep(3000);
 
-		WebElement delete_account = driver.findElement(By.cssSelector("#clicking"));
-		js.executeScript("arguments[0].scrollIntoView();", delete_account);
+		WebElement delete_account = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id = 'clicking']")));
+		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
 		delete_account.click();
-		Thread.sleep(3000);
-		WebElement delete_reason = driver.findElement(By.cssSelector("#exampleRadios1"));
+		Thread.sleep(2000);
+		WebElement delete_reason = wait
+				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#exampleRadios1")));
 		Thread.sleep(3000);
 		delete_reason.click();
 		Thread.sleep(3000);

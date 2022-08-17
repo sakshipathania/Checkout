@@ -198,7 +198,7 @@ public class paypal_checkout extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//em[normalize-space()='$149.99']")));
 		js.executeScript("arguments[0].scrollIntoView();", actualTitle);
 		String semi_Annual_Price = actualTitle.getText();
-		
+
 		String expectedTitle = "$149.99";
 		Thread.sleep(1000);
 		// wait.implictywait(driver);
@@ -642,10 +642,12 @@ public class paypal_checkout extends SetClass {
 		js.executeScript("arguments[0].click();", account);
 		Thread.sleep(3000);
 
-		WebElement delete_account = driver.findElement(By.cssSelector("#clicking"));
-		js.executeScript("arguments[0].scrollIntoView();", delete_account);
+		WebElement delete_account = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id = 'clicking']")));
+		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
 		delete_account.click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
+		
 		WebElement delete_reason = driver.findElement(By.cssSelector("#exampleRadios1"));
 		js.executeScript("arguments[0].scrollIntoView();", delete_reason);
 		Thread.sleep(3000);

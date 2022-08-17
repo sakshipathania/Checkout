@@ -179,10 +179,12 @@ public class sign_up_correct_data extends SetClass {
 		account.click();
 		Thread.sleep(3000);
 
-		WebElement delete_account = driver.findElement(By.cssSelector("#clicking"));
-		js.executeScript("arguments[0].scrollIntoView();", delete_account);
+		WebElement delete_account = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id = 'clicking']")));
+		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
 		delete_account.click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
+		
 		WebElement delete_reason = driver.findElement(By.cssSelector("#exampleRadios1"));
 		Thread.sleep(3000);
 		delete_reason.click();
