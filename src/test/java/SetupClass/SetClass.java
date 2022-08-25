@@ -27,14 +27,8 @@ public class SetClass {
 	public static WebDriver driver;
 	public static String AppURL;
 	public static Properties property = new Properties(System.getProperties());
-	public static String browserName;
 	public static Logger log;
 	public static WebElement webelement;
-	public static String local_chrome;
-	public static String local_FFbrowser;
-	public String Button_Click_Time;
-	public String message_write_time;
-	public String TestFile = "C:\\Users\\slide53\\eclipse-workspace\\SlideTeamWebsiteFormsAuto\\write.txt";
 	protected static WebDriverWait wait;
 	protected static JavascriptExecutor js;
 	public static String browser;
