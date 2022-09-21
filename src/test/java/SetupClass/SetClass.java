@@ -1,6 +1,9 @@
 package SetupClass;
 
 import java.io.FileReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -9,6 +12,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,6 +22,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -32,6 +37,11 @@ public class SetClass {
 	protected static WebDriverWait wait;
 	protected static JavascriptExecutor js;
 	public static String browser;
+
+	public static final String UserName = "rahulsharma_8RUv0Y";
+
+	public static final String Automate_Key = "zg8foQC6mjQGoHx9CQJE";
+	public static final String URL = "https://" + UserName + ":" + Automate_Key + "@hub-cloud.browserstack.com/wd/hub";
 
 	@BeforeClass
 	public static void before_Class() throws Exception {
@@ -49,9 +59,9 @@ public class SetClass {
 			browser = property.getProperty("browser");
 			System.out.println("config browser = " + browser);
 		}
-		
+
 		property.setProperty("browser", browser);
-		
+
 		System.out.println("setProperty browser = " + browser);
 
 		if ((property.getProperty("browser").equals("chrome"))) {
@@ -90,6 +100,39 @@ public class SetClass {
 			wait = new WebDriverWait(driver, 50);
 			js = (JavascriptExecutor) driver;
 			Thread.sleep(1000);
+		}
+
+		else if ((property.getProperty("browser").equals("safari"))) {
+
+			// DesiredCapabilities caps = new DesiredCapabilities();
+
+			/*
+			 * caps.setCapability("browser", browser); caps.setCapability("browser_version",
+			 * "104"); caps.setCapability("os", "windows"); caps.setCapability("os_version",
+			 * "10"); caps.setCapability("resolution", "1920x1200");
+			 */
+
+			MutableCapabilities capabilities = new MutableCapabilities();
+			capabilities.setCapability("browserName", "Safari");
+			capabilities.setCapability("browserVersion", "15.0");
+			HashMap<String, Object> browserstackOptions = new HashMap<String, Object>();
+			browserstackOptions.put("os", "OS X");
+			browserstackOptions.put("osVersion", "Monterey");
+			browserstackOptions.put("resolution", "2560x1440");
+			browserstackOptions.put("local", "false");
+			browserstackOptions.put("seleniumVersion", "3.141.59");
+			capabilities.setCapability("bstack:options", browserstackOptions);
+
+			try {
+				driver = new RemoteWebDriver(new URL(URL), capabilities);
+				wait = new WebDriverWait(driver, 30);
+				js = (JavascriptExecutor) driver;
+				driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		else {
