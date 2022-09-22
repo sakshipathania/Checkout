@@ -118,7 +118,7 @@ public class SetClass {
 			HashMap<String, Object> browserstackOptions = new HashMap<String, Object>();
 			browserstackOptions.put("os", "OS X");
 			browserstackOptions.put("osVersion", "Monterey");
-			browserstackOptions.put("resolution", "1920x1080");
+			//browserstackOptions.put("resolution", "1920x1080");
 			browserstackOptions.put("local", "false");
 			browserstackOptions.put("seleniumVersion", "3.141.59");
 			capabilities.setCapability("bstack:options", browserstackOptions);
