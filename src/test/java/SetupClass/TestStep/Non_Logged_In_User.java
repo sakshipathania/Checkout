@@ -100,7 +100,7 @@ public class Non_Logged_In_User extends SetClass {
 			WebElement logout = driver.findElement(By.xpath("//a[contains(text(),'Sign Out')]"));
 			if (logout.isEnabled()) {
 				logout.click();
-				Thread.sleep(8000);
+				Thread.sleep(3000);
 			}
 		} catch (NoSuchElementException Ext) {
 
@@ -109,7 +109,7 @@ public class Non_Logged_In_User extends SetClass {
 		// verify the message after signout
 		String verifySignOutMessage = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//h3[@class='base']"))).getText();
-
+		System.out.println("verifySignOutMessage = " + verifySignOutMessage);
 		Assert.assertTrue("user is not logout from the application",
 				verifySignOutMessage.contains("YOU ARE NOW LOGGED OUT"));
 
