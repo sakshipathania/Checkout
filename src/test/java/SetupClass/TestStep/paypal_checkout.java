@@ -543,6 +543,18 @@ public class paypal_checkout extends SetClass {
 
 				place_order_btn.click();
 
+			} else {
+				WebElement paypalOption = wait
+						.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='paypal_express']")));
+
+				paypalOption.click();
+				Thread.sleep(2000);
+				WebElement place_order_btn = wait.until(ExpectedConditions.elementToBeClickable(
+						By.xpath("//button[@id='place-order-trigger']//span[contains(text(),'Place Order')] ")));
+
+				js.executeScript("arguments[0].scrollIntoView();", place_order_btn);
+
+				place_order_btn.click();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -553,84 +565,21 @@ public class paypal_checkout extends SetClass {
 
 	@Then("^user proceed to pay with paypal pp$")
 	public void user_proceed_to_pay_with_paypal_pp() throws Throwable {
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 
-		// place order button
-		try {
-			WebElement place_order_btn = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'Place Order')]")));
-			js.executeScript("arguments[0].scrollIntoView();", place_order_btn);
-			Thread.sleep(3000);
-			place_order_btn.click();
-			Thread.sleep(5000);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		Thread.sleep(1000);
-		try {
-			WebElement iframe = driver.findElement(By.id("livechat-full-view"));
-			if (iframe.isDisplayed()) {
-				driver.switchTo().frame(iframe);
-				Actions act = new Actions(driver);
-				act.moveToElement(driver.findElement(By.cssSelector("#title .icon-minimize"))).build().perform();
-				Thread.sleep(2000);
-				WebElement chat1 = driver.findElement(By.cssSelector("#title .icon-minimize"));
-				Thread.sleep(1000);
-				chat1.click();
-				Thread.sleep(1000);
-				driver.switchTo().defaultContent();
-				Thread.sleep(1000);
-				driver.switchTo().parentFrame();
-				Thread.sleep(1000);
-			} else {
+		String expected_Tilte = "Log in to your PayPal account";
+		String current_Tilte = driver.getTitle();
+		
+		System.out.println(expected_Tilte + "= expected_Tilte");
 
-				System.out.println("chat window does not open");
-			}
-		} catch (NoSuchElementException NCP) {
+		Assert.assertEquals(expected_Tilte.equals(current_Tilte), "Title does not match");
 
-		}
 	}
 
 	@Then("^paypal popup appears and user navigates back to my account pp$")
 	public void paypal_popup_appears_and_user_navigates_back_to_my_account_pp() throws Throwable {
 
-		// handling window
-		// Store the CurrentWindow for future reference
-
-		String currentWindow = driver.getWindowHandle();
-		String popupWindowHandle = null;
-
-		Thread.sleep(2000);
-		for (String handle : driver.getWindowHandles()) {
-			if (!handle.equals(currentWindow)) {
-
-				popupWindowHandle = handle;
-
-				Thread.sleep(1000);
-				driver.switchTo().window(popupWindowHandle);
-				// System.out.println("user is on mainWindow ------" + popupWindowHandle);
-
-				System.out.println("Title = " + driver.getTitle());
-
-				Assert.assertTrue("title does not matched",
-						driver.getTitle().contains("Log in to your PayPal account"));
-				Thread.sleep(1000);
-
-				WebElement email = wait
-						.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='email']")));
-				email.clear();
-				email.sendKeys("nisha.dhiman@slidetech.in");
-
-				Thread.sleep(1000);
-				WebElement next = wait
-						.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='btnNext']")));
-				next.click();
-
-				// verify text is on hold due to paypal security reason.
-			}
-		}
-		// This is to switch to the main window
-		driver.switchTo().window(currentWindow);
+		driver.navigate().back();
 
 	}
 
@@ -644,29 +593,29 @@ public class paypal_checkout extends SetClass {
 
 		WebElement delete_account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id = 'clicking']")));
-		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
+
 		js.executeScript("arguments[0].click();", delete_account);
 		Thread.sleep(2000);
-		
+
 		WebElement delete_reason = driver.findElement(By.cssSelector("#exampleRadios1"));
 		js.executeScript("arguments[0].scrollIntoView();", delete_reason);
 		Thread.sleep(3000);
 		js.executeScript("arguments[0].click();", delete_reason);
-		//delete_reason.click();
+
 		Thread.sleep(3000);
 
 		WebElement delete_profile = wait
 				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#delete-final")));
 		js.executeScript("arguments[0].scrollIntoView();", delete_profile);
 		js.executeScript("arguments[0].click();", delete_profile);
-		//delete_profile.click();
+
 		Thread.sleep(3000);
 
 		WebElement delete_profile_coupon = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(
 				"#flipModal > div > div > div.modal-footer.button_action > button.btn.btn-default.button_2")));
 		js.executeScript("arguments[0].scrollIntoView();", delete_profile_coupon);
 		js.executeScript("arguments[0].click();", delete_profile_coupon);
-		//delete_profile_coupon.click();
+
 		Thread.sleep(30000);
 		String verifyDeleteAccount = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
