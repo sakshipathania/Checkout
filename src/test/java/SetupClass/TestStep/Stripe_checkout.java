@@ -523,7 +523,7 @@ public class Stripe_checkout extends SetClass {
 		try {
 			Thread.sleep(600);
 			// select 2co option
-			WebElement co_btn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#amasty_stripe")));
+			WebElement co_btn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='amasty_stripe']")));
 			Thread.sleep(2000);
 			// co_btn.click();
 			js.executeScript("arguments[0].click();", co_btn);
