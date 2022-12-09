@@ -25,11 +25,16 @@ public class Non_Logged_In_User extends SetClass {
 		driver.navigate().refresh();
 		Thread.sleep(2000);
 
-		driver.get("https://www.slideteam.net/change-management-powerpoint-presentation-slides.html");
-		driver.manage().deleteAllCookies();
-		Thread.sleep(5000);
-		driver.navigate().refresh();
-		Thread.sleep(2000);
+	
+		WebElement popularPPT = wait.until(ExpectedConditions
+				.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
+		popularPPT.click();
+		Thread.sleep(3000);
+		
+		WebElement selectPPT = wait.until(ExpectedConditions
+				.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
+		selectPPT.click();
+		Thread.sleep(3000);
 
 	}
 
