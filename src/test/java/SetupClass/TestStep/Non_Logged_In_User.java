@@ -70,7 +70,7 @@ public class Non_Logged_In_User extends SetClass {
 
 		WebElement password = wait.until(ExpectedConditions.elementToBeClickable(By.id("pass")));
 
-		password.sendKeys("sumittest@21234");
+		password.sendKeys("redhat2090");
 		Thread.sleep(2000);
 
 		WebElement login_btn = wait.until(ExpectedConditions.elementToBeClickable(By.id("send2")));
