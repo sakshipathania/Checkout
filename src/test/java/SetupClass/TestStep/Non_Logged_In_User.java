@@ -25,14 +25,13 @@ public class Non_Logged_In_User extends SetClass {
 		driver.navigate().refresh();
 		Thread.sleep(2000);
 
-	
-		WebElement popularPPT = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
+		WebElement popularPPT = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
 		popularPPT.click();
 		Thread.sleep(3000);
-		
-		WebElement selectPPT = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
+
+		WebElement selectPPT = wait.until(
+				ExpectedConditions.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
 		selectPPT.click();
 		Thread.sleep(3000);
 
@@ -78,6 +77,23 @@ public class Non_Logged_In_User extends SetClass {
 		login_btn.click();
 		Thread.sleep(2000);
 
+		if (!driver.findElements(By.xpath("//div[@class=' login-attempt-popup']")).isEmpty()) {
+			WebElement approve = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='confirm-approve']")));
+			Thread.sleep(3000);
+			approve.click();
+			Thread.sleep(3000);
+
+			WebElement popularPPT = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
+			popularPPT.click();
+			Thread.sleep(3000);
+
+			WebElement selectPPT = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
+			selectPPT.click();
+			Thread.sleep(3000);
+		}
 	}
 
 	@Then("^user will be redirected to same pdp page viii$")
