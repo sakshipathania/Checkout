@@ -65,7 +65,7 @@ public class Non_Logged_In_User extends SetClass {
 	public void user_login_with_correct_details_viii() throws Throwable {
 		WebElement username = wait.until(ExpectedConditions.elementToBeClickable(By.id("email")));
 
-		username.sendKeys("sumit@slideteam.net");
+		username.sendKeys("sumit.kumar@slidetech.in");
 		Thread.sleep(2000);
 
 		WebElement password = wait.until(ExpectedConditions.elementToBeClickable(By.id("pass")));
