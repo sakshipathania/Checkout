@@ -162,13 +162,19 @@ public class sign_up_correct_data extends SetClass {
 		js.executeScript("arguments[0].scrollIntoView();", dwnd_btn);
 		dwnd_btn.click();
 
-		if (!driver.findElements(By.xpath("//a[@class='mfp-close roundlink']")).isEmpty()) {
-			WebElement close_popup = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='mfp-close roundlink']")));
+		if (!driver.findElements(By.xpath("//div[@class='checkout_custom']")).isEmpty()) {
+			WebElement selectRadioButton = wait.until(ExpectedConditions.elementToBeClickable(
+					By.xpath("//label[normalize-space()='Human Resources']//span[@class='checkmark']")));
+			selectRadioButton.click();
+			Thread.sleep(1000);
+			WebElement submitButton = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[normalize-space()='Submit']")));
+			submitButton.click();
+			Thread.sleep(2000);
 
-			close_popup.click();
+			WebElement msg = driver.findElement(By.xpath("//span[text() = 'Interest has been saved.']"));
+			Assert.assertTrue(msg.isDisplayed());
 		}
-		Thread.sleep(3000);
 
 	}
 
@@ -184,7 +190,7 @@ public class sign_up_correct_data extends SetClass {
 		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
 		js.executeScript("arguments[0].click();", delete_account);
 		Thread.sleep(2000);
-		
+
 		WebElement delete_reason = driver.findElement(By.cssSelector("#exampleRadios1"));
 		Thread.sleep(3000);
 		delete_reason.click();

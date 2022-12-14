@@ -550,7 +550,7 @@ public class Stripe_checkout extends SetClass {
 
 			Assert.assertTrue("price does not match", price.getText().equals("$149.99"));
 
-//  verify title
+           //verify title
 			String expectedTitle = driver.getTitle();
 			Thread.sleep(3000);
 			System.out.println("Title of the Page is --> " + expectedTitle);
