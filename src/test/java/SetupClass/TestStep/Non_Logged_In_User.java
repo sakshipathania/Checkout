@@ -19,7 +19,7 @@ public class Non_Logged_In_User extends SetClass {
 	@Given("^user is already on PDP Page MD viii$")
 	public void user_is_already_on_PDP_Page_MD_viii() throws Throwable {
 
-		driver.get("https://www.slideteam.net/");
+		driver.get(AppURL);
 		driver.manage().deleteAllCookies();
 		Thread.sleep(5000);
 		driver.navigate().refresh();
