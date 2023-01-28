@@ -180,34 +180,34 @@ public class sign_up_correct_data extends SetClass {
 
 	@Then("^user delete the new account created cd$")
 	public void user_delete_the_new_account_created_cd() throws InterruptedException {
+		Thread.sleep(2000);
+		WebElement account = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
+		js.executeScript("arguments[0].click();", account);
 		Thread.sleep(3000);
-		WebElement account = wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("My Account")));
-		account.click();
-		Thread.sleep(4000);
 
 		WebElement delete_account = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id = 'clicking']")));
-		delete_account.click();
-		//js.executeScript("arguments[0].click();", delete_account);
-		Thread.sleep(2000);
-
-		WebElement delete_reason = driver.findElement(By.cssSelector("#exampleRadios1"));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='clicking']")));
 		Thread.sleep(3000);
-		delete_reason.click();
+		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
+		js.executeScript("arguments[0].click();", delete_account);
+
+		Thread.sleep(3000);
+		WebElement delete_reason = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")));
+		Thread.sleep(3000);
+		js.executeScript("arguments[0].click();", delete_reason);
 		Thread.sleep(3000);
 
 		WebElement delete_profile = wait
-				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#delete-final")));
-		js.executeScript("arguments[0].scrollIntoView();", delete_profile);
-		delete_profile.click();
+				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button#delete-final")));
+		js.executeScript("arguments[0].click();", delete_profile);
 		Thread.sleep(3000);
 
-		WebElement delete_profile_coupon = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(
-				"#flipModal > div > div > div.modal-footer.button_action > button.btn.btn-default.button_2")));
-		js.executeScript("arguments[0].scrollIntoView();", delete_profile_coupon);
+		WebElement delete_profile_coupon = wait.until(
+				ExpectedConditions.elementToBeClickable(By.xpath("//button[@class = 'btn btn-default button_2']")));
 		delete_profile_coupon.click();
 		Thread.sleep(30000);
-
 		String verifyDeleteAccount = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
 		Thread.sleep(3000);

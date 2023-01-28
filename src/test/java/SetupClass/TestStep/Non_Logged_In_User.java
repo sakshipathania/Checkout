@@ -1,5 +1,7 @@
 package SetupClass.TestStep;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -30,9 +32,9 @@ public class Non_Logged_In_User extends SetClass {
 		popularPPT.click();
 		Thread.sleep(3000);
 
-		WebElement selectPPT = wait.until(
-				ExpectedConditions.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
-		selectPPT.click();
+		List<WebElement> selectPPT = driver
+				.findElements(By.xpath("//div[@class = 'product-item-info ppt-product']//img"));
+		selectPPT.get(1).click();
 		Thread.sleep(3000);
 
 	}
@@ -89,9 +91,9 @@ public class Non_Logged_In_User extends SetClass {
 			popularPPT.click();
 			Thread.sleep(3000);
 
-			WebElement selectPPT = wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
-			selectPPT.click();
+			List<WebElement> selectPPT = driver
+					.findElements(By.xpath("//div[@class = 'product-item-info ppt-product']//img"));
+			selectPPT.get(1).click();
 			Thread.sleep(3000);
 		}
 	}
