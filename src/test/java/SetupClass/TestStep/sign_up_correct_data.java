@@ -194,8 +194,8 @@ public class sign_up_correct_data extends SetClass {
 
 		Thread.sleep(3000);
 		boolean deletePopUp = wait
-				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")))
-				.isDisplayed();
+				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input#exampleRadios1"))).isDisplayed();
+		System.out.println("value of displayrd" + deletePopUp);
 		Assert.assertTrue("Delete pop-up was not dispalyed", deletePopUp);
 		WebElement delete_reason = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")));

@@ -570,20 +570,21 @@ public class Stripe_checkout extends SetClass {
 		Thread.sleep(2000);
 		WebElement account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
-		js.executeScript("arguments[0].click();", account);
-		Thread.sleep(3000);
+		account.click();
+		Thread.sleep(2000);
 
 		WebElement delete_account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='clicking']")));
 		Thread.sleep(3000);
-		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
-		js.executeScript("arguments[0].click();", delete_account);
+		delete_account.click();
+		// js.executeScript("arguments[0].click();", delete_account);
 
 		Thread.sleep(3000);
 		boolean deletePopUp = wait
-				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")))
-				.isDisplayed();
+				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input#exampleRadios1"))).isDisplayed();
+		System.out.println("value of displayrd" + deletePopUp);
 		Assert.assertTrue("Delete pop-up was not dispalyed", deletePopUp);
+
 		WebElement delete_reason = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")));
 		Thread.sleep(3000);
