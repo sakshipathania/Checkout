@@ -572,13 +572,13 @@ public class Stripe_checkout extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
 		account.click();
 		Thread.sleep(2000);
-
+		System.out.println("going to click delete element");
 		WebElement delete_account = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='clicking']")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id,'clicking')]/parent::li")));
 		Thread.sleep(3000);
 		delete_account.click();
 		// js.executeScript("arguments[0].click();", delete_account);
-
+		System.out.println("delete element has been clicked ");
 		Thread.sleep(3000);
 		boolean deletePopUp = wait
 				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input#exampleRadios1"))).isDisplayed();

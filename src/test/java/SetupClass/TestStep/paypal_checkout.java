@@ -622,14 +622,15 @@ public class paypal_checkout extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
 		js.executeScript("arguments[0].click();", account);
 		Thread.sleep(3000);
-
+		System.out.println("going to click delete element");
 		WebElement delete_account = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='clicking']")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id, 'clicking')]/parent::li")));
 		Thread.sleep(3000);
 		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
 		js.executeScript("arguments[0].click();", delete_account);
 
 		Thread.sleep(3000);
+		System.out.println("delete element has been clicked ");
 		boolean deletePopUp = wait
 				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input#exampleRadios1"))).isDisplayed();
 		System.out.println("value of displayrd" + deletePopUp);
