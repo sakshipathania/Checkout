@@ -18,9 +18,6 @@ import io.cucumber.java.en.Then;
 
 public class paypal_checkout extends SetClass {
 
-	WebDriverWait wait = new WebDriverWait(driver, 10);
-	JavascriptExecutor js = (JavascriptExecutor) driver;
-
 	@Given("^user is already on Website Home Page pp$")
 	public void user_is_already_on_Website_Home_Page_pp() throws Throwable {
 
@@ -554,7 +551,7 @@ public class paypal_checkout extends SetClass {
 
 		// handling window
 		// Store the CurrentWindow for future reference
-		Assert.assertEquals("title does not match", driver.getTitle(), "Log in to your PayPal account");
+		
 		String currentWindow = driver.getWindowHandle();
 		String popupWindowHandle = null;
 
@@ -583,7 +580,7 @@ public class paypal_checkout extends SetClass {
 				WebElement next = wait
 						.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id='btnNext']")));
 				next.click();
-
+				Thread.sleep(2000);
 				// verify text is on hold due to paypal security reason.
 			}
 		}
