@@ -22,10 +22,7 @@ public class Non_Logged_In_User extends SetClass {
 	public void user_is_already_on_PDP_Page_MD_viii() throws Throwable {
 
 		driver.get(AppURL);
-		driver.manage().deleteAllCookies();
-		Thread.sleep(5000);
-		driver.navigate().refresh();
-		Thread.sleep(2000);
+		ClearBrowserCache();
 
 		WebElement popularPPT = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));

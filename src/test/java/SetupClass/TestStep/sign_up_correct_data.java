@@ -182,12 +182,12 @@ public class sign_up_correct_data extends SetClass {
 	public void user_delete_the_new_account_created_cd() throws InterruptedException {
 		Thread.sleep(2000);
 		WebElement account = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
-		js.executeScript("arguments[0].click();", account);
-		Thread.sleep(3000);
-		System.out.println("going to click delete element");
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'My Account')]")));
+		account.click();
+		Thread.sleep(5000);
+
 		WebElement delete_account = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id,'clicking')]/parent::li")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id, 'clicking')]/self::a")));
 		Thread.sleep(3000); //
 		js.executeScript("arguments[0].click();", delete_account);
 
@@ -212,6 +212,7 @@ public class sign_up_correct_data extends SetClass {
 				ExpectedConditions.elementToBeClickable(By.xpath("//button[@class = 'btn btn-default button_2']")));
 		delete_profile_coupon.click();
 		Thread.sleep(30000);
+
 		String verifyDeleteAccount = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
 		Thread.sleep(3000);

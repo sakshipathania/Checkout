@@ -520,8 +520,8 @@ public class paypal_checkout extends SetClass {
 	public void user_is_redirected_to_checkout_page_pp() throws Throwable {
 		Thread.sleep(2000);
 		try {
-			WebElement paypalOption = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='paypal_express']")));
+			WebElement paypalOption = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//input[@id='paypal_express' or @value = 'paypal_express']")));
 
 			paypalOption.click();
 		} catch (Exception e) {
@@ -537,38 +537,16 @@ public class paypal_checkout extends SetClass {
 
 		// place order button
 		try {
-			WebElement place_order_btn = wait
-					.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='place-order-trigger']")));
+			WebElement place_order_btn = wait.until(ExpectedConditions.elementToBeClickable(
+					By.xpath("//button[@id='place-order-trigger' or @class = 'button action primary']")));
 			js.executeScript("arguments[0].scrollIntoView();", place_order_btn);
 			Thread.sleep(3000);
-			place_order_btn.click();
+			js.executeScript("arguments[0].click();", place_order_btn);
 			Thread.sleep(5000);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		Thread.sleep(1000);
-		try {
-			WebElement iframe = driver.findElement(By.id("livechat-full-view"));
-			if (iframe.isDisplayed()) {
-				driver.switchTo().frame(iframe);
-				Actions act = new Actions(driver);
-				act.moveToElement(driver.findElement(By.cssSelector("#title .icon-minimize"))).build().perform();
-				Thread.sleep(2000);
-				WebElement chat1 = driver.findElement(By.cssSelector("#title .icon-minimize"));
-				Thread.sleep(1000);
-				chat1.click();
-				Thread.sleep(1000);
-				driver.switchTo().defaultContent();
-				Thread.sleep(1000);
-				driver.switchTo().parentFrame();
-				Thread.sleep(1000);
-			} else {
-
-				System.out.println("chat window does not open");
-			}
-		} catch (NoSuchElementException NCP) {
-
-		}
 	}
 
 	@Then("^paypal popup appears and user navigates back to my account pp$")
@@ -576,7 +554,7 @@ public class paypal_checkout extends SetClass {
 
 		// handling window
 		// Store the CurrentWindow for future reference
-
+		Assert.assertEquals("title does not match", driver.getTitle(), "Log in to your PayPal account");
 		String currentWindow = driver.getWindowHandle();
 		String popupWindowHandle = null;
 
@@ -617,25 +595,26 @@ public class paypal_checkout extends SetClass {
 	@Then("^user deleted the account pp$")
 	public void user_deleted_the_account_pp() throws Throwable {
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		WebElement account = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
-		js.executeScript("arguments[0].click();", account);
-		Thread.sleep(3000);
-		System.out.println("going to click delete element");
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'My Account')]")));
+		account.click();
+		Thread.sleep(5000);
+
 		WebElement delete_account = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id, 'clicking')]/parent::li")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id, 'clicking')]/self::a")));
 		Thread.sleep(3000);
-		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
 		js.executeScript("arguments[0].click();", delete_account);
 
 		Thread.sleep(3000);
 		System.out.println("delete element has been clicked ");
+
 		boolean deletePopUp = wait
 				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input#exampleRadios1"))).isDisplayed();
 		System.out.println("value of displayrd" + deletePopUp);
 		Assert.assertTrue("Delete pop-up was not dispalyed", deletePopUp);
 		Thread.sleep(3000);
+
 		WebElement delete_reason = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")));
 		Thread.sleep(3000);
@@ -651,6 +630,7 @@ public class paypal_checkout extends SetClass {
 				ExpectedConditions.elementToBeClickable(By.xpath("//button[@class = 'btn btn-default button_2']")));
 		delete_profile_coupon.click();
 		Thread.sleep(30000);
+
 		String verifyDeleteAccount = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
 		Thread.sleep(3000);
