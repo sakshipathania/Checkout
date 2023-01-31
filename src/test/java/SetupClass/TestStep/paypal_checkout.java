@@ -592,27 +592,30 @@ public class paypal_checkout extends SetClass {
 	@Then("^user deleted the account pp$")
 	public void user_deleted_the_account_pp() throws Throwable {
 
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		WebElement account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'My Account')]")));
 		account.click();
 		Thread.sleep(3000);
-		driver.navigate().refresh();
+	
 		chatWindow();
+		driver.navigate().refresh();
 		WebElement delete_account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id, 'clicking')]/self::a")));
 		Thread.sleep(3000);
 		delete_account.click();
-		js.executeScript("arguments[0].click();", delete_account);
 
 		Thread.sleep(3000);
 		System.out.println("delete element has been clicked ");
 
-		boolean deletePopUp = wait
-				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input#exampleRadios1"))).isDisplayed();
-		System.out.println("value of displayrd" + deletePopUp);
-		Assert.assertTrue("Delete pop-up was not dispalyed", deletePopUp);
-		Thread.sleep(3000);
+		/*
+		 * boolean deletePopUp = wait
+		 * .until(ExpectedConditions.elementToBeClickable(By.cssSelector(
+		 * "input#exampleRadios1"))).isDisplayed();
+		 * System.out.println("value of displayrd" + deletePopUp);
+		 * Assert.assertTrue("Delete pop-up was not dispalyed", deletePopUp);
+		 * Thread.sleep(3000);
+		 */
 
 		WebElement delete_reason = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")));
@@ -624,7 +627,7 @@ public class paypal_checkout extends SetClass {
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button#delete-final")));
 		js.executeScript("arguments[0].click();", delete_profile);
 		Thread.sleep(3000);
-		
+
 		chatWindow();
 		WebElement delete_profile_coupon = wait.until(
 				ExpectedConditions.elementToBeClickable(By.xpath("//button[@class = 'btn btn-default button_2']")));

@@ -192,12 +192,15 @@ public class sign_up_correct_data extends SetClass {
 		Thread.sleep(3000); //
 		js.executeScript("arguments[0].click();", delete_account);
 
-		Thread.sleep(3000);
-		System.out.println("delete element has been clicked ");
-		boolean deletePopUp = wait
-				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input#exampleRadios1"))).isDisplayed();
-		System.out.println("value of displayrd" + deletePopUp);
-		Assert.assertTrue("Delete pop-up was not dispalyed", deletePopUp);
+		/*
+		 * Thread.sleep(3000); System.out.println("delete element has been clicked ");
+		 * boolean deletePopUp = wait
+		 * .until(ExpectedConditions.elementToBeClickable(By.cssSelector(
+		 * "input#exampleRadios1"))).isDisplayed();
+		 * System.out.println("value of displayrd" + deletePopUp);
+		 * Assert.assertTrue("Delete pop-up was not dispalyed", deletePopUp);
+		 */
+
 		WebElement delete_reason = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")));
 		Thread.sleep(3000);
@@ -209,12 +212,11 @@ public class sign_up_correct_data extends SetClass {
 		js.executeScript("arguments[0].click();", delete_profile);
 		Thread.sleep(3000);
 		chatWindow();
-		
+
 		WebElement delete_profile_coupon = wait.until(
 				ExpectedConditions.elementToBeClickable(By.xpath("//button[@class = 'btn btn-default button_2']")));
 		delete_profile_coupon.click();
 		Thread.sleep(3000);
-		
 
 		String verifyDeleteAccount = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();

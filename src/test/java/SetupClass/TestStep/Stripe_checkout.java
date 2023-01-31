@@ -579,12 +579,14 @@ public class Stripe_checkout extends SetClass {
 		Thread.sleep(3000);
 		js.executeScript("arguments[0].click();", delete_account);
 
-		System.out.println("delete element has been clicked ");
-		Thread.sleep(3000);
-		boolean deletePopUp = wait
-				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input#exampleRadios1"))).isDisplayed();
-		System.out.println("value of displayrd" + deletePopUp);
-		Assert.assertTrue("Delete pop-up was not dispalyed", deletePopUp);
+		/*
+		 * System.out.println("delete element has been clicked "); Thread.sleep(3000);
+		 * boolean deletePopUp = wait
+		 * .until(ExpectedConditions.elementToBeClickable(By.cssSelector(
+		 * "input#exampleRadios1"))).isDisplayed();
+		 * System.out.println("value of displayrd" + deletePopUp);
+		 * Assert.assertTrue("Delete pop-up was not dispalyed", deletePopUp);
+		 */
 
 		WebElement delete_reason = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")));
