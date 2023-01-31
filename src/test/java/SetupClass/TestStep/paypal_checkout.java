@@ -551,7 +551,7 @@ public class paypal_checkout extends SetClass {
 
 		// handling window
 		// Store the CurrentWindow for future reference
-		
+
 		String currentWindow = driver.getWindowHandle();
 		String popupWindowHandle = null;
 
@@ -596,8 +596,8 @@ public class paypal_checkout extends SetClass {
 		WebElement account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'My Account')]")));
 		account.click();
-		Thread.sleep(5000);
-
+		Thread.sleep(3000);
+		Chat_window_handle();
 		WebElement delete_account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id, 'clicking')]/self::a")));
 		Thread.sleep(3000);
