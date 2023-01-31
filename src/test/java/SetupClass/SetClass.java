@@ -23,6 +23,7 @@ import org.openqa.selenium.edge.EdgeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -118,7 +119,7 @@ public class SetClass {
 			HashMap<String, Object> browserstackOptions = new HashMap<String, Object>();
 			browserstackOptions.put("os", "OS X");
 			browserstackOptions.put("osVersion", "Monterey");
-			//browserstackOptions.put("resolution", "1920x1080");
+			// browserstackOptions.put("resolution", "1920x1080");
 			browserstackOptions.put("local", "false");
 			browserstackOptions.put("seleniumVersion", "3.141.59");
 			capabilities.setCapability("bstack:options", browserstackOptions);
@@ -158,6 +159,33 @@ public class SetClass {
 				Thread.sleep(1000);
 				driver.switchTo().parentFrame();
 				Thread.sleep(1000);
+			} else {
+
+				System.out.println("chat window does not open");
+			}
+		} catch (NoSuchElementException NCP) {
+
+		}
+	}
+
+	public static void chatWindow() throws Throwable {
+
+		try {
+			WebElement iframe = driver.findElement(By.xpath("//iframe[@id = 'chat-widget' or @name = 'chat-widget']"));
+			Thread.sleep(1000);
+			boolean value = iframe.isDisplayed();
+			System.out.println("value = " + value);
+			if (value == true) {
+				driver.switchTo().frame(iframe);
+				WebElement chat1 = wait.until(ExpectedConditions.elementToBeClickable(
+						By.xpath("//div[@role = 'main']//button[@aria-label = 'Minimize window']")));
+				Thread.sleep(1000);
+				chat1.click();
+				Thread.sleep(1000);
+				driver.switchTo().defaultContent();
+				Thread.sleep(1000);
+				driver.switchTo().parentFrame();
+				Thread.sleep(3000);
 			} else {
 
 				System.out.println("chat window does not open");

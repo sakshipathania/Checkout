@@ -571,8 +571,8 @@ public class Stripe_checkout extends SetClass {
 		WebElement account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
 		account.click();
-		Thread.sleep(5000);
-
+		Thread.sleep(3000);
+		Chat_window_handle();
 		WebElement delete_account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id, 'clicking')]/self::a")));
 		Thread.sleep(3000);
