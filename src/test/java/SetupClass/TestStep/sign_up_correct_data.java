@@ -179,13 +179,13 @@ public class sign_up_correct_data extends SetClass {
 	}
 
 	@Then("^user delete the new account created cd$")
-	public void user_delete_the_new_account_created_cd() throws InterruptedException {
+	public void user_delete_the_new_account_created_cd() throws Throwable {
 		Thread.sleep(2000);
 		WebElement account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'My Account')]")));
 		account.click();
 		Thread.sleep(3000);
-		Chat_window_handle();
+		chatWindow();
 		WebElement delete_account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id, 'clicking')]/self::a")));
 		Thread.sleep(3000); //

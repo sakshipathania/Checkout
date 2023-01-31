@@ -143,31 +143,6 @@ public class SetClass {
 
 	}
 
-	public static void Chat_window_handle() throws InterruptedException {
-		try {
-			WebElement iframe = driver.findElement(By.id("livechat-full-view"));
-			if (iframe.isDisplayed()) {
-				driver.switchTo().frame(iframe);
-				Actions act = new Actions(driver);
-				act.moveToElement(driver.findElement(By.cssSelector("#title .icon-minimize"))).build().perform();
-				Thread.sleep(1000);
-				WebElement chat1 = driver.findElement(By.cssSelector("#title .icon-minimize"));
-				Thread.sleep(1000);
-				chat1.click();
-				Thread.sleep(1000);
-				driver.switchTo().defaultContent();
-				Thread.sleep(1000);
-				driver.switchTo().parentFrame();
-				Thread.sleep(1000);
-			} else {
-
-				System.out.println("chat window does not open");
-			}
-		} catch (NoSuchElementException NCP) {
-
-		}
-	}
-
 	public static void chatWindow() throws Throwable {
 
 		try {
