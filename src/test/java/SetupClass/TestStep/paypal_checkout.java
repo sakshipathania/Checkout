@@ -599,7 +599,7 @@ public class paypal_checkout extends SetClass {
 		Thread.sleep(3000);
 	
 		chatWindow();
-		driver.navigate().refresh();
+		
 		WebElement delete_account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id, 'clicking')]/self::a")));
 		Thread.sleep(3000);

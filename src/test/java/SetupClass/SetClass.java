@@ -158,8 +158,6 @@ public class SetClass {
 				chat1.click();
 				Thread.sleep(1000);
 				driver.switchTo().defaultContent();
-				Thread.sleep(1000);
-				driver.switchTo().parentFrame();
 				Thread.sleep(3000);
 			} else {
 
@@ -181,7 +179,7 @@ public class SetClass {
 	@AfterClass
 	public static void after_Class() throws InterruptedException {
 		Thread.sleep(2000);
-		//driver.quit(); // ->> don't want to close the browser for now
+		driver.quit(); // ->> don't want to close the browser for now
 		Thread.sleep(2000);
 
 	}
