@@ -515,11 +515,11 @@ public class paypal_checkout extends SetClass {
 
 	@Then("^user is redirected to checkout page pp$")
 	public void user_is_redirected_to_checkout_page_pp() throws Throwable {
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		try {
-			WebElement paypalOption = wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("//input[@id='paypal_express' or @value = 'paypal_express']")));
-
+			WebElement paypalOption = wait.until(
+					ExpectedConditions.elementToBeClickable(By.cssSelector(".payment-method-title >#paypal_express")));
+			Thread.sleep(2000);
 			paypalOption.click();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -597,9 +597,9 @@ public class paypal_checkout extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'My Account')]")));
 		account.click();
 		Thread.sleep(3000);
-	
+
 		chatWindow();
-		
+
 		WebElement delete_account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@id, 'clicking')]/self::a")));
 		Thread.sleep(3000);
