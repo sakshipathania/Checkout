@@ -12,7 +12,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -103,43 +102,7 @@ public class SetClass {
 			Thread.sleep(1000);
 		}
 
-		else if ((property.getProperty("browser").equals("safari"))) {
-
-			// DesiredCapabilities caps = new DesiredCapabilities();
-
-			/*
-			 * caps.setCapability("browser", browser); caps.setCapability("browser_version",
-			 * "104"); caps.setCapability("os", "windows"); caps.setCapability("os_version",
-			 * "10"); caps.setCapability("resolution", "1920x1200");
-			 */
-
-			MutableCapabilities capabilities = new MutableCapabilities();
-			capabilities.setCapability("browserName", "Safari");
-			capabilities.setCapability("browserVersion", "15.0");
-			HashMap<String, Object> browserstackOptions = new HashMap<String, Object>();
-			browserstackOptions.put("os", "OS X");
-			browserstackOptions.put("osVersion", "Monterey");
-			// browserstackOptions.put("resolution", "1920x1080");
-			browserstackOptions.put("local", "false");
-			browserstackOptions.put("seleniumVersion", "3.141.59");
-			capabilities.setCapability("bstack:options", browserstackOptions);
-
-			try {
-				driver = new RemoteWebDriver(new URL(URL), capabilities);
-				wait = new WebDriverWait(driver, 30);
-				js = (JavascriptExecutor) driver;
-				driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		else {
-
-			System.out.println("platform does not provide");
-		}
+		
 
 	}
 
